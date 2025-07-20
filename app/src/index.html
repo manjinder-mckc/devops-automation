@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Turo Devops Excercise</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 40px; }
+    a.button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    #version { margin-top: 20px; font-size: 0.9em; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>Demo App for Turo DevOps Exercise</h1>
+  <a href="/page1.html" class="button">Go to Page 1</a>
+  <a href="/page-2.html" class="button">Go to Page 2</a>
+  <a href="/config.html" class="button">Go to Config</a>
+
+  <div id="version">Loading version...</div>
+
+  <script>
+    fetch('/version.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('version').innerText = 
+          `Version: ${data.version}, Built on: ${data.build_time}`;
+      })
+      .catch(() => {
+        document.getElementById('version').innerText = 'Version info not available';
+      });
+  </script>
+</body>
+</html>

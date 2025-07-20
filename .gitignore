@@ -1,0 +1,51 @@
+# Ignore node_modules and dependencies
+node_modules/
+vendor/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment files
+.env
+.env.local
+*.env
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore Docker-related files
+docker-compose.override.yml
+*.env.docker
+*.tar
+*.bak
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Ignore Kubernetes config files
+kubeconfig
+*.kubeconfig
+
+# Ignore build artifacts
+build/
+dist/
+*.out
+*.o
+*.so
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
