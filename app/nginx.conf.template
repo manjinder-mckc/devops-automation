@@ -2,7 +2,7 @@
 server {
     listen 80;
     server_name localhost;
-    
+
     root /usr/share/nginx/html;
     index index.html;
 
@@ -11,6 +11,7 @@ server {
     }
 
     location / {
+        add_header X-App-Env "$APP_ENV";
         try_files $uri $uri/ =404;
     }
 } 
