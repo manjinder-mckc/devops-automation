@@ -34,7 +34,7 @@ def update_tfvars(version, tfvars_path=None):
     if not os.path.exists(tfvars_path):
         print(f"Creating {tfvars_path} with initial content.")
         with open(tfvars_path, "w") as f:
-            f.write(f'image_tag = "{version}"\n')
+            f.write(f'image = "{version}"\n')
         return
 
     with open(tfvars_path, "r") as f:
@@ -43,19 +43,19 @@ def update_tfvars(version, tfvars_path=None):
     new_lines = []
     found = False
     for line in lines:
-        if line.strip().startswith("image_tag"):
-            new_lines.append(f'image_tag = "{version}"\n')
+        if line.strip().startswith("image"):
+            new_lines.append(f'image = "{version}"\n')
             found = True
         else:
             new_lines.append(line)
 
     if not found:
-        new_lines.append(f'image_tag = "{version}"\n')
+        new_lines.append(f'image = "{version}"\n')
 
     with open(tfvars_path, "w") as f:
         f.writelines(new_lines)
 
-    print(f"Updated {tfvars_path} with image_tag = \"{version}\"")
+    print(f"Updated {tfvars_path} with image = \"{version}\"")
 
 def main():
     if len(sys.argv) != 2:
@@ -63,7 +63,7 @@ def main():
         sys.exit(1)
 
     version = sys.argv[1]
-    branch_name = f"deploy/{version}-{datetime.now().strftime('%Y%m%d%H%M')}"
+    branch_name = f"deploy/{version.split(':')[1]}-{datetime.now().strftime('%Y%m%d%H%M')}"
 
     with cd(REPO_ROOT):
         tfvars_path = os.path.join("iac", "terraform.tfvars")
