@@ -22,7 +22,6 @@ usage() {
   exit 1
 }
 
-
 # Try and get current version from VERSION file if available
 if [ ! -f "$VERSION_FILE" ]; then
   echo "0.0.0" > "$VERSION_FILE"
@@ -58,20 +57,20 @@ case "$BUMP_TYPE" in
 esac
 
 NEW_VERSION="$MAJOR.$MINOR.$PATCH"
-echo "$NEW_VERSION" > "$VERSION_FILE"
+printf "%s" "$NEW_VERSION" > "$VERSION_FILE"
 
 echo "Bumping version: $CURRENT_VERSION → $NEW_VERSION"
 
 # Generate version info file
 echo "Generating version.json..."
-cat <<EOF > app/version.json
+cat <<EOF > src/version.json
 {
   "version": "$NEW_VERSION",
   "build_time": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 }
 EOF
 
-docker build -t $USERNAME/$IMAGE_NAME:$NEW_VERSION ./app
+docker build -t $USERNAME/$IMAGE_NAME:$NEW_VERSION .
 
 docker push $USERNAME/$IMAGE_NAME:$NEW_VERSION
 
