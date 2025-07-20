@@ -29,6 +29,8 @@ docker-compose.override.yml
 *.tfstate.*
 .terraform/
 .terraform.lock.hcl
+terraform.plan
+
 
 # Ignore Kubernetes config files
 kubeconfig

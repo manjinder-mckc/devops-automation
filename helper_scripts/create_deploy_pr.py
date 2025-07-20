@@ -59,15 +59,16 @@ def update_tfvars(version, tfvars_path=None):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python create_deployment_pr.py <version>")
+        print("Usage: python create_deployment_pr.py <image>")
         sys.exit(1)
 
-    version = sys.argv[1]
-    branch_name = f"deploy/{version.split(':')[1]}-{datetime.now().strftime('%Y%m%d%H%M')}"
+    image = sys.argv[1]
+    version = image.split(":")[1] if ":" in image else image
+    branch_name = f"deploy/{version}-{datetime.now().strftime('%Y%m%d%H%M')}"
 
     with cd(REPO_ROOT):
         tfvars_path = os.path.join("iac", "terraform.tfvars")
-        update_tfvars(version, tfvars_path=tfvars_path)
+        update_tfvars(image, tfvars_path=tfvars_path)
 
         # Git commit flow
         run_cmd(f"git checkout -b {branch_name}")
