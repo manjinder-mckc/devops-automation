@@ -70,7 +70,7 @@ cat <<EOF > src/version.json
 }
 EOF
 
-docker build -t $USERNAME/$IMAGE_NAME:$NEW_VERSION .
+docker build -t $USERNAME/$IMAGE_NAME:$NEW_VERSION . --platform=linux/amd64 
 
 docker push $USERNAME/$IMAGE_NAME:$NEW_VERSION
 
