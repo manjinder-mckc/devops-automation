@@ -7,6 +7,6 @@ WORKDIR /usr/share/nginx/html
 COPY src/ .
 
 # COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY nginx.conf.template /etc/nginx/nginx.conf.template
+COPY nginx.conf.template  /etc/nginx/conf.d/default.conf.template
 
-CMD ["/bin/sh", "-c", "envsubst '$$APP_ENV' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+CMD ["/bin/sh", "-c", "envsubst '$$APP_ENV' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
