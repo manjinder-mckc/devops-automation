@@ -45,6 +45,15 @@ resource "kubernetes_deployment" "app" {
             mount_path = "/usr/share/nginx/html/config.html"
             sub_path   = "config.html"
           }
+
+          readiness_probe {
+            http_get {
+              path = "/"
+              port = 80
+            }
+            initial_delay_seconds = 5
+            period_seconds        = 10
+          }
         }
 
         volume {
