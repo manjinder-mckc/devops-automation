@@ -77,16 +77,16 @@ docker push $USERNAME/$IMAGE_NAME:$NEW_VERSION
 docker tag $USERNAME/$IMAGE_NAME:$NEW_VERSION $USERNAME/$IMAGE_NAME:latest
 docker push $USERNAME/$IMAGE_NAME:latest
 
-IMAGE="$USERNAME/$IMAGE_NAME:$NEW_VERSION"
+export DEPLOY_IMAGE="$USERNAME/$IMAGE_NAME:$NEW_VERSION"
 
 echo "Done! Pushed version: $NEW_VERSION"
-echo "Image: $IMAGE"
+echo "Image: $DEPLOY_IMAGE"
 
 # Manual approval to invoke create_deploy_pr.py
-read -p "Invoke the deployment PR script (../helper_scripts/create_deploy_pr.py)? (yes/no): " CONFIRMATION
-if [[ "$CONFIRMATION" == "yes" ]]; then
-  echo "Invoking deployment PR script..."
-  python3 ../helper_scripts/create_deploy_pr.py "$IMAGE"
-else
-  echo "Skipping deployment PR script invocation."
-fi
+# read -p "Invoke the deployment PR script (../helper_scripts/create_deploy_pr.py)? (yes/no): " CONFIRMATION
+# if [[ "$CONFIRMATION" == "yes" ]]; then
+#   echo "Invoking deployment PR script..."
+#   python3 ../helper_scripts/create_deploy_pr.py "$IMAGE"
+# else
+#   echo "Skipping deployment PR script invocation."
+# fi

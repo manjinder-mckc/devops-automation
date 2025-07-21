@@ -56,7 +56,7 @@ case "$COMMAND" in
     terraform init
     terraform validate
     terraform plan -out="$PLAN_FILE"
-    terraform apply "$PLAN_FILE" --timeout=5m
+    terraform apply "$PLAN_FILE" 
     echo "Terraform apply completed successfully."
     ;;
   destroy)
