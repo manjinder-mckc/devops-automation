@@ -12,6 +12,7 @@ fi
 
 ## Create PR and apply changes with manual approval
 cd ../helper_scripts
+DEPLOY_IMAGE=$(cat ../app/VERSION)
 read -p "Invoke the deployment PR script (../helper_scripts/create_deploy_pr.py)? (yes/no): " CONFIRMATION
 if [[ "$CONFIRMATION" == "yes" ]]; then
   echo "Invoking deployment PR script..."
