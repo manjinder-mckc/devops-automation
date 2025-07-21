@@ -1,4 +1,4 @@
-# k8s-app
+# fixtures
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -10,21 +10,17 @@
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.16.1 |
+No providers.
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_test-app-1"></a> [test-app-1](#module\_test-app-1) | ../../../iac/_modules/k8s-app | n/a |
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [kubernetes_config_map.app_config](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/config_map) | resource |
-| [kubernetes_deployment.app](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment) | resource |
-| [kubernetes_service.app](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service) | resource |
+No resources.
 
 ## Inputs
 

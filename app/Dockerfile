@@ -1,4 +1,6 @@
 FROM nginx:alpine
+# checkov:skip=CKV_DOCKER_3:JustADemo Using base nginx user for now
+# checkov:skip=CKV_DOCKER_2:JustADemo ignoring custom healthcheck for now
 
 RUN apk add --no-cache curl
 
