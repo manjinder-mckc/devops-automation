@@ -1,1 +1,1 @@
-image = "manjinderdevops/devops-automation-exercise:0.0.2"
+image = "manjinderdevops/devops-automation-exercise:0.0.9"
