@@ -10,3 +10,25 @@ repos:
           - --hook-config=--create-file-if-not-exist=true
           - --args=--config=.terraform-docs.yml
           - --args=--lockfile=False
+  
+  # - repo: https://github.com/bridgecrewio/checkov
+  #   rev: 3.2.40
+  #   hooks:
+  #     - id: checkov
+  #       args: ["--directory", "iac"]
+  #       language_version: python3.11 
+
+  - repo: local
+    hooks:
+      - id: terratest
+        name: terratest
+        entry: bash -c 'cd tests/terratest && go test -v .'
+        language: system
+        types: [terraform]
+        always_run: true
+
+      - id: run-python-tests
+        name: Run Python Unit Tests
+        entry: python3 -m unittest tests/python/test_create_deployment_pr.py
+        language: system
+        pass_filenames: false

@@ -35,5 +35,7 @@ No resources.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_deployment_image"></a> [deployment\_image](#output\_deployment\_image) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
